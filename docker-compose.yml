@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
  postgres:
-   container_name: nest-barber-postgres
+   container_name: nest-forum-postgres
    image: postgres
    ports:
      - 5432:5432
    environment:
      POSTGRES_USER: postgres
      POSTGRES_PASSWORD: docker
-     POSTGRES_DB: barber-db
+     POSTGRES_DB: forum-db
      PGDATA: /data/postgres
    volumes:
      - ./data/pg:/data/postgres
