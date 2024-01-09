@@ -1,24 +1,13 @@
-import { Body, Controller, Get, Post, Query, Req, UseGuards, UsePipes } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import type { Request } from 'express';
-import { CurrentUser } from 'src/auth/current-user-decorator';
-import { UserPayload } from 'src/auth/jwt.strategy';
-import { z } from 'zod';
-import { ZodValidationPipe } from 'src/pipes/zod-validation.pipe';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { UserPayload } from '@/modules/auth/strategy/jwt.strategy';
+import { CurrentUser } from '@/shared/decorators/current-user-decorator';
+import { PrismaService } from '@/shared/infra/database/prisma/prisma.service';
+import { ZodValidationPipe } from '@/shared/pipes/zod-validation.pipe';
+import { CreateQuestionBodySchema, createQuestionBodySchema } from '@/shared/validators/create-question-validator';
+import { PageQueryParamSchema, pageQueryParamSchema } from '@/shared/validators/page-questions-validator';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 
-const createQuestionBodySchema = z.object({
-    title: z.string(),
-    content: z.string()
-});
-
-type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>;
-
-
-const pageQueryParamSchema =  z.string().optional().default('1').transform(Number).pipe(z.number().min(1))
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema);
-type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>
 
 @Controller('questions')
 @UseGuards(JwtAuthGuard)
