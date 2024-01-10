@@ -1,11 +1,11 @@
-import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
-import { UserPayload } from '@/modules/auth/strategy/jwt.strategy';
 import { CurrentUser } from '@/shared/decorators/current-user-decorator';
-import { PrismaService } from '@/shared/infra/database/prisma/prisma.service';
-import { ZodValidationPipe } from '@/shared/pipes/zod-validation.pipe';
+import { PrismaService } from '@/infra/prisma/prisma.service';
+import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
 import { CreateQuestionBodySchema, createQuestionBodySchema } from '@/shared/validators/create-question-validator';
 import { PageQueryParamSchema, pageQueryParamSchema } from '@/shared/validators/page-questions-validator';
 import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '@/infra/auth/guards/jwt-auth.guard';
+import { UserPayload } from '@/infra/auth/strategy/jwt.strategy';
 
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema);
 

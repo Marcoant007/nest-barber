@@ -1,5 +1,5 @@
-import { PrismaService } from "@/shared/infra/database/prisma/prisma.service";
-import { ZodValidationPipe } from "@/shared/pipes/zod-validation.pipe";
+import { PrismaService } from "@/infra/prisma/prisma.service";
+import { ZodValidationPipe } from "@/infra/pipes/zod-validation.pipe";
 import { AuthenticateBodySchema, authenticateBodySchema } from "@/shared/validators/authenticate-validator";
 import { Body, Controller, Post, UnauthorizedException, UsePipes } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";

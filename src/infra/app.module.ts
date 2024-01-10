@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from '../shared/infra/database/prisma/prisma.service';
+import { PrismaService } from './prisma/prisma.service';
 import { ConfigModule } from '@nestjs/config';
 import { envSchema } from '@/infra/env';
-import { AuthModule } from '../modules/auth/auth.module';
-import { AuthenticateController } from '../modules/auth/controller/authenticate.controller';
-import { AccountController } from '../modules/account/controller/account.controller';
-import { QuestionController } from '../modules/question/controller/question.controller';
-
+import { AccountController } from './http/controller/account/account.controller';
+import { AuthModule } from './auth/auth.module';
+import { AuthenticateController } from './auth/controller/authenticate.controller';
+import { QuestionController } from './http/controller/question/question.controller';
 @Module({
   imports: [ConfigModule.forRoot({
     validate: env => envSchema.parse(env),

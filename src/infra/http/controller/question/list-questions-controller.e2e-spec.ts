@@ -1,10 +1,9 @@
 import { AppModule } from "@/infra/app.module";
-import { PrismaService } from "@/shared/infra/database/prisma/prisma.service";
+import { PrismaService } from "@/infra/prisma/prisma.service";
 import { INestApplication } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Test } from '@nestjs/testing';
 import { hash } from "bcryptjs";
-import { title } from "process";
 import request from 'supertest';
 
 describe('Create question (E2E)', () => {
