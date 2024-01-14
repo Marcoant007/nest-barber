@@ -1,5 +1,5 @@
 import { CurrentUser } from '@/shared/decorators/current-user-decorator';
-import { PrismaService } from '@/infra/prisma/prisma.service';
+import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
 import { CreateQuestionBodySchema, createQuestionBodySchema } from '@/shared/validators/create-question-validator';
 import { PageQueryParamSchema, pageQueryParamSchema } from '@/shared/validators/page-questions-validator';

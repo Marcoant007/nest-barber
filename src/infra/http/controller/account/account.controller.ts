@@ -1,4 +1,4 @@
-import { PrismaService } from "@/infra/prisma/prisma.service";
+import { PrismaService } from "@/infra/database/prisma/prisma.service";
 import { ZodValidationPipe } from "@/infra/pipes/zod-validation.pipe";
 import { CreateAccountBodySchema, createAccountBodySchema } from "@/shared/validators/account-validator";
 import { Body, ConflictException, Controller, HttpCode, Post, UsePipes } from "@nestjs/common";
